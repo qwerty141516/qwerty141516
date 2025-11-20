@@ -19,8 +19,8 @@ Here are some ideas to get you started:
 :cyclone:
 :whale2:
 
-<div>
-  <div style="background-color:#fff9c4; padding: 20px; border-radius: 12px;">
+<div style="background-color:#fff9c4; padding: 20px; border-radius: 12px;">
+  
 
   <!--Header-->
   ![header](https://capsule-render.vercel.app/api?type=blur&height=500&color=gradient&text=Hi&strokeWidth=2&section=footer&reversal=true&fontAlign=50&stroke=E0E0E0&fontSize=60&textBg=false)
