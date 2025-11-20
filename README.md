@@ -15,3 +15,4 @@ Here are some ideas to get you started:
 -->
 
 ![header](https://capsule-render.vercel.app/api?type=blur&height=500&color=gradient&text=Hi&strokeWidth=2&section=footer&reversal=true&fontAlign=50&stroke=E0E0E0&fontSize=60&textBg=false)
+:snowflake:
