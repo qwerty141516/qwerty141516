@@ -19,7 +19,7 @@ Here are some ideas to get you started:
 :cyclone:
 :whale2:
 
-<div style="background-color:#fff9c4; padding: 20px; border-radius: 12px;">
+<div>
   
 
   <!--Header-->
