@@ -29,7 +29,7 @@ Here are some ideas to get you started:
 <div>
   <!--Body-->
   
-  ## 👀 나나나
+  ## 이메일
   #### jmunki06@dongyang.ac.kr
   #### 
   #### 
