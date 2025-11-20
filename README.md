@@ -31,7 +31,7 @@ Here are some ideas to get you started:
   <!--Body-->
   
   ## 이메일
-  #### jmunki06@dongyang.ac.kr
+  #### - jmunki06@dongyang.ac.kr
   #### 
   #### 
   <br/>
