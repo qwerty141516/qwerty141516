@@ -29,8 +29,10 @@ $ git remote rm org
 $ git remote show origin(atom)
 - 원격 저장소의 모든 브랜치 보기 가능
 
+17 지역과 원격 저장소 연동 push pull
 
-17
+
+
 
 18
 
