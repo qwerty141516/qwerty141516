@@ -246,5 +246,62 @@ Untracked 파일 삭제
 
 22 다양한 브랜치 병합 ===========================================================
 
+병합(merge)
+- 두 개의 브랜치를 하나로 모으는 과정
+  fast-forward(빨리 감기) 병합
+  3-awy 병합
+
+fast-forward 병합 조건
+- 현재 브랜치 master가 병합할 대상 커밋의 직접적인 뿌리(조상)가 되는 경우
+  간단히 두 브랜치가 일렬 상태
+  bugfix 브랜치 이력이 master 브랜치 이력을 모두 포함하는 경우
+
+브랜치 master에서 병합 명령
+$ git merge bugfix
+
+
+3-way 상태 : 두 분기가 갈라진 상태
+
+- 두 브랜치의 조상이 같은 경우
+  master  브랜치 내의 변경 내용과 bugfix 브랜치 내의 변경 내용을 하나로 통합할 필요
+
+3-way 병합
+  새로운 커밋을 사용하여 두 기록을 합침
+
+병합할 브랜치의 조상이 기준 브랜치인 경우, 즉 일렬 상태에서
+- 병합 기본은 fast forward 병합
+- 마스터 브랜치에서 브랜치 dev1을 병합
+  기본이 fast-forward 병합
+
+
+기본이 fast forward 상태에서 non fast forward 병합
+- 마스터에서 dev1을 fast forward로 병합
+  $ git merge dev1
+
+마스터에서 dev1을 non fast forward로 병합 (3-way 병합)
+  옵션 --no-ff
+    $ git merge dev1 --no-ff
+
+
+병합의 다양한 옵션 종류
+
+- $ git merge --ff-only {병합할_브랜치_명}
+  상태가 fast-Forward인 일령 상태에서만 병합 진행
+
+- $ git merge --squash {병합할_브랜치_명}
+  현재 브랜치에 병합 대상과의 합치는 커밋을 하나 생성해 병합
+    병합되는 브랜치는 사용하지 않고 그대로 남음
+
+
+옵션 --squash
+
+- 강압적인(?) 병합
+$ git merge --squash hotfix
+사전적 의미(짓 뭉개다)에서 알 수 있듯이
+  · 커밋 이력과 병합 되는 브랜치 이력도 남기지 않음
+  · 새로운 커밋에 상대 브랜치의 내용을 모두 합해 새로운 커밋으로 병합
+    → 직접 메세지와 함께 커밋을 해야함
+
+
 
 
