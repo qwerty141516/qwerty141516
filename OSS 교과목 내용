@@ -302,6 +302,21 @@ $ git merge --squash hotfix
   · 새로운 커밋에 상대 브랜치의 내용을 모두 합해 새로운 커밋으로 병합
     → 직접 메세지와 함께 커밋을 해야함
 
+Summary
+>> 기준 브랜치에서 hotfix 브랜치 병합
+$ git merge hotfix
+  · fast-forward, 3-way merge
 
+>> 무조건 3-way 병합 수행
+$ git merge --no-ff hotfix
+
+>> fast-forward인 경우에만 병합 진행
+$ git merge --ff-only hotfix
+
+>> 현재 브랜치에서 커밋 하나만 생성해서 병합
+$ git merge --squash hotfix
+
+
+23  ===========================================================
 
 
