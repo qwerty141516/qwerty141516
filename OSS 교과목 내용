@@ -317,6 +317,74 @@ $ git merge --ff-only hotfix
 $ git merge --squash hotfix
 
 
-23  ===========================================================
+23  브랜치 병합 실습 ===========================================================
+
+24 병합 충돌과 해결 ============================================================
+
+충돌 해결
+- 직접 파일 내용을 수정 후 저장
+- 계속해서 add, commit 진행
+- 필요하면 합병된 이전 브랜치 삭제
+
+
+병합 취소
+$ git merge --abort
+
+다시 병합
+$ git merge feat/list
+
+Summary
+>> 3-way 충돌 발생
+$ git merge gotfix
+
+>> 충돌한 파일을 인지하고 파일 수정
+$ code file
+
+>> 수정 후 다시 add, commit
+$ git commit -am 'msg'
+
+>> 충돌 이후 병합 취소
+$ git merge --abort
+
+
+25 브랜치 리베이스 rebase ====================================================
+
+3-way merge와 rebase 비교
+
+merge
+- 여러 분기가 생긴 변경 내용의 이력이 모두 그대로 남아 있기 때문에 이력이 복잡해짐
+
+rebase
+- 히스토리가 선형으로 단순해지고 좀 더 깨끗한 이력을 남김
+- 원래의 커밋 이력이 변경됨
+  정확한 이력을 남겨야 할 필요가 있을 경우에는 사용하면 안됨
+
+
+fast-forward merge와 rebase 비교
+
+fast-foward merge
+- 조상에 위치한 브랜치에서 선행 브랜치의 마지막으로 이동하는 병합
+
+reabse
+- 두 갈래의 브랜치에서
+  기존의 베이스를 수정
+    → 병합할 브랜치 마지막 커밋을 새로운 베이스로 수정하는 병합
+
+
+3-way 병합 
+$ git checkout master
+$ git merge experiment
+
+
+
+
+Summary
+>> 기준 브랜치에서 main 브랜치 rebase 병합
+$ git checkout topic
+$ git merge main
+
+>> 다시 main을 돌아와 fast-forward 병합 진행
+$ git checkout main
+$ git merge topic
 
 
