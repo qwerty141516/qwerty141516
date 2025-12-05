@@ -376,6 +376,19 @@ $ git checkout master
 $ git merge experiment
 
 
+ㅁ $ git rebase <newparent> <branch>
+
+일반적 rebase 방법
+- topic에서 main을 rebase 한 이후, 다시 main으로 이동 fast-forward 병합 수행
+  $ git checkout topic
+  $ git rebase main
+  $ git checkout main
+  $ git merge topic
+
+다른 rebase 방법: 어느 브랜치든 main topic 순서로 재배치 방법
+  $ git rebase main topic
+  $ git checkout main
+  $ git merge topic
 
 
 Summary
@@ -386,5 +399,104 @@ $ git merge main
 >> 다시 main을 돌아와 fast-forward 병합 진행
 $ git checkout main
 $ git merge topic
+
+
+26 커밋 이력 수정 ============================================================
+
+최근 커밋 메시지 수정
+- 기본 편집기 설정 방법
+  $ git config --global core.editor 'code--wait'
+
+설정된 편집기로 최근 커밋 메시지 수정
+- $ git commit --amend
+  새로운 커밋 ID로 수정됨
+
+최근 커밋 메시지를 직접 입력해 수정
+- $ git commit --amend -m "an updated commit message"
+  새로운 커밋 ID로 수정됨
+
+
+HEAD의 내용 수정
+- 새로운 파일을 추가하거나 파일을 수정한 후
+- 새로운 커밋으로 생성하지 않고
+- 최신 커밋에 반영
+  새로운 커밋 ID로 수정됨
+
+커밋 옵션 --amend 사용
+- 기본 편집기로 메시지 편집
+$ git commit --amend
+
+- 명령어 상에 직접 메시지 입력
+$ git commit --amend -m 'new message'
+
+-메시지 수정 없이 다시 커밋 수정
+$ git commit --amend --no-edit
+
+
+rebase의 --interactive를 사용
+
+-작업공간이 깨끗한 이후, 이전 여러 개의 커밋을 수정
+  이전 커밋을 다시 작성한 경우 새 ID가 부여
+
+-rebase의 --interactive를 사용하여 커밋 시퀀스를 새로운 기본 커밋에 결합
+$ git rebase -i HEAD~3
+$ git rebase --interactive HEAD~3
+  HEAD~3 : 수정할 커밋의 직전 커밋
+  실제 HEAD~2부터 수정가능
+
+
+rebase의 --interactive 주요 명령어
+
+$ git rebase --interactive HEAD~3
+- 기본 편집기로 열리며, HEAD~3이면 HEAD~2, HEAD~1, HEAD 3개의 행을 편집 가능
+- 로그 결과와 다르게 오래된 커밋부터 표시
+
+주요 rebase -i 대화형 명령어
+- p(ick) : 해당 커밋을 수정하지 않고 그대로 사용
+- r(eward) : 개별 커밋 메시지를 다시 작성
+- s(quash) : 계속된 이후 커밋을 이전 커밋에 결합
+- d(rop) : 커밋 자체를 삭제
+
+명령 squash 방법
+
+이후 것(더 최신의 커밋)을 이전 커밋(더 오래된 커밋)에 뭉치는 방법
+- 상위에 위치한 커밋에 pick이 이씅면서
+  아래로 연속적으로 squash 명령
+  다음으로 커밋 E가 커밋 BB에 뭉쳐져 커밋 E가 제거됨
+    → pick 0e88bee BB
+    → squash d88525b E
+
+새로운 커밋 메시지를 입력하느 ㄴ단계 있음
+  - 기본 편집기로 편집
+    BB와 E를 합친 커밋 메시지를 지정
+
+최신 4개를 부분 메시지 수정
+$ git rebase --interactive HEAD~4
+
+
+27 =====================
+
+28 버전 되돌리기 ================================================
+
+>> HEAD~2의 내용으로 작업 디렉토리와 스테이징 영역, 깃 저장소에 복사
+$ git reset --hard HEAD~2
+
+>> HEAD~2의 내용으로 스테이징 영역과 깃 저장소에 복사
+$ git reset --mixed HEAD~2
+
+>> HEAD~2의 내용으로 깃 저장소에 복사
+$ git reset --soft HEAD~2
+
+>> 이전에 수행한 reset을 바로 취소하는 명령
+$ git reset --hard ORIG_HEAD
+
+
+
+29 버전 되돌리기 실습  ================
+
+
+30 커밋 취소 revert ================================================================
+
+
 
 
