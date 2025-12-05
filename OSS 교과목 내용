@@ -1,4 +1,4 @@
-16 원격 저장소 복제 Clone
+16 원격 저장소 복제 Clone   ===========================================================
 $ git clone [복사된-주소]
 - 원격저장소와 동일한 이름으로 복제
 
@@ -29,7 +29,7 @@ $ git remote rm org
 $ git remote show origin(atom)
 - 원격 저장소의 모든 브랜치 보기 가능
 
-17 지역과 원격 저장소 연동 push pull
+17 지역과 원격 저장소 연동 push pull   ===========================================================
 
 - 원격 저장소 수정 사항 pull로 지역 저장소로 가져오기
 $ git pull origin main
@@ -47,13 +47,21 @@ $ git push
 
 
 
-18
+18 지역과 원격 저장소 연동  ===========================================================
+
+원격 저장소 수정 사항 pull로 지역 저장소로 가져오기
+$ git pull origin main
+$ git pull
+
+원격 저장소 수정 사항 fetch로 지역 저장소로 가져와 병합하기
+$ git fetch origin main
+$ git fetch
+$ git merge origin/main
 
 
 
 
-
-19 오픈소스 소프트웨어
+19 오픈소스 소프트웨어     ===========================================================
 
 OSS: p[en source software
 누구나 특별한 제한 없이 그 코드를 보고 사용할 수 있는 오픈소스 라이선스를 만족하는 SW
@@ -137,12 +145,106 @@ github, gitlab, bitbucket
 
 
 
-==================================================================================================================
+
+20 임시 저장 stash  ===========================================================
+
+= 작업 폴더와 스테이징 영역을 숨김(stash)에 저장하고 작업 폴더를 정리
+  $ git stash
+  $ git stash -m '메세지'
+  $ git stash save
+  $ git stash save '메세지'
+
+= 옵션
+--keep-index, -k
+  · 스테이징 영역을 제외하고 작업 폴더만 저장
+
+--include-untracked, -u
+  · Untracked 파일도 포함해 저장
+
+
+= 최근 임시저장 내용을 가져와 반영, stash 목록은 그대로
+기본으로 작업 디렉토리 내용만 다시 복사해 활용
+  $ git stash apply
+
+스테이지 영역도 함께 복사하기 위해서는 옵션 사용
+  $ git stash apply --index
+
+옵션 -k | --keep-index
+  스테이징 영역은 저장하지 않고 그대로 놔둠
+  
+옵션 -u | --include-untracked
+  Untracked 파일도 포함해 저장
+
+옵션 -p | --patch
+  변경된 모든 사항들을 저장하는 것이 아니며 대화형 프롬프트를 통해
+  자신이 stash에 저장할 것과 저장하지 않을 것을 지정 기능
+
+
+목록 보기
+$ git stash list
+  stash@{0}    <--- 가장 최신것이 0번
+  stash@{1}
+  stash@{2}
+  ....
+
+
+특정 stash 확인
+
+- 해당 stash 항목이 생성되었을 때의 커밋 자료와 최신 stash 항목 간의 차이로 표시
+$ git stash show
+  h.txt | 2++
+  1 file changed, 2 insertions(+) <---------변화된 파일과 변화된 수만 표시
+
+$ git stash show -p
+  -p: 파일 내용의 차이까지 보이기
+
+- 해당 stash 항목이 생성되었을 때의 커밋 자료와 해당 stash 항목 간의 차이로 표시
+$ git stash show stash@{h}
+$ git stash show stash@{n}-p
+  -p : 내용의 차이까지 보이기 
+
+- 최근 또는 지정된 임시 저장소 내용을 가져와 반영하고 삭제
+$ git stash pop
+$ git stash pop stash@{n}
+
+- 최근 또는 지정된 임시저장소 내용을 가져와 반영, 작업 디렉토리만 반영,
+stash 목록은 그대로
+$ git stash apply
+$ git stash apply stash@{n}
+
+- 최근 또는 지정된 임시저장소 내용을 가져와 반영, 작업 디렉토리와 스테이징 영역도 반영, stash 목록은 그대로
+$ git stash apply --index
+$ git stash apply --index stash@{n}
 
 
 
+특정 stash 삭제와 모든 stash 삭제
+- 최근 임시저장 내용을 삭제
+$ git stash drop
+
+- 지정된 임시저장 내용을 삭제
+$ git stash drop stash@{n}
+
+- 모든 stash 목록을 모두 제거
+$ git stash clear
 
 
+Untracked 파일 삭제
+
+- $ git clean
+  바로 삭제 되지 않음
+
+- $ git clean -i
+
+- $ git clean -f
+  무조건 삭제
+
+
+
+21 stash 실습 ===========================================================
+
+
+22 다양한 브랜치 병합 ===========================================================
 
 
 
